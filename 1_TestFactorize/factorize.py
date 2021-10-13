@@ -14,29 +14,30 @@ class TestFactorize(unittest.TestCase):
                     factorize(arg)
 
     def test_zero_and_one_cases(self):
-        for arg, res in (0, 1), ((0, ), (1, )):
+        for arg, res in zip((0, 1), ((0, ), (1, ))):
             with self.subTest(x=arg):
-                self.assertCountEqual(factorize(arg), res)
+                self.assertEqual(factorize(arg), res)
 
     def test_simple_numbers(self):
-        arguments = answers = (3, 13, 29)
-        for arg, res in arguments, answers:
+        arguments = (3, 13, 29)
+        answers = ((3, ), (13, ), (29, ))
+        for arg, res in zip(arguments, answers):
             with self.subTest(x=arg):
-                self.assertCountEqual(factorize(arg), res)
+                self.assertEqual(factorize(arg), res)
 
     def test_two_simple_multipliers(self):
         arguments = (6, 26, 121)
         answers = ((2, 3), ((2, 13)), (11, 11))
-        for arg, res in arguments, answers:
+        for arg, res in zip(arguments, answers):
             with self.subTest(x=arg):
-                self.assertCountEqual(factorize(arg), res)
+                self.assertEqual(factorize(arg), res)
 
     def test_many_multipliers(self):
         arguments = (1001, 9699690)
-        answers = ((7, 11, 13), ((2, 3, 5, 7, 11, 13, 17, 19)))
-        for arg, res in arguments, answers:
+        answers = ((7, 11, 13), (2, 3, 5, 7, 11, 13, 17, 19))
+        for arg, res in zip(arguments, answers):
             with self.subTest(x=arg):
-                self.assertCountEqual(factorize(arg), res)
+                self.assertEqual(factorize(arg), res)
 
 
 # def factorize(x):
@@ -45,5 +46,7 @@ class TestFactorize(unittest.TestCase):
 #     :type x: int,>=0
 #     :rtype: tuple[N],N>0
 #     """
-#     pass
+#     return (0, )
 
+# if __name__ == "__main__":
+#     unittest.main()
